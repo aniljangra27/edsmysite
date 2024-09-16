@@ -1,26 +1,60 @@
 export default async function decorate(block) {
-    const links = [...block.querySelectorAll('a')].map((a) => a.href);
-    fetch(links)
-    .then(response => response.json())
-    .then(json => {
-      const tableBody = document.querySelector('#data-table tbody');
+    const link = [...block.querySelectorAll('a')].map((a) => a.href);
+   // Dynamically create the div to hold the table
+   const divContainer = document.createElement('div');
+   divContainer.id = 'table-container'; // Set id to div
+   document.body.appendChild(divContainer); // Append div to body
 
-      // Loop through the object and create table rows
-      for (const key in json) {
-        if (json.hasOwnProperty(key)) {
-          const row = document.createElement('tr');
+   // Fetch the data from the API
+   fetch(link)
+     .then(response => response.json())
+     .then(json => {
+       // Create the table and append it to the div
+       const tableContainer = document.getElementById('table-container');
 
-          const keyCell = document.createElement('td');
-          keyCell.textContent = key;
+       // Create table elements dynamically
+       const table = document.createElement('table');
+       const caption = document.createElement('caption');
+       const thead = document.createElement('thead');
+       const tbody = document.createElement('tbody');
 
-          const valueCell = document.createElement('td');
-          valueCell.textContent = json[key];
+       // Set table caption
+       caption.textContent = 'Todo Details';
+       table.appendChild(caption);
 
-          row.appendChild(keyCell);
-          row.appendChild(valueCell);
-          tableBody.appendChild(row);
-        }
-      }
-    })
-    .catch(error => console.error('Error fetching the data:', error));
+       // Create header row
+       const headerRow = document.createElement('tr');
+       const headerKey = document.createElement('th');
+       headerKey.textContent = 'Key';
+       const headerValue = document.createElement('th');
+       headerValue.textContent = 'Value';
+       headerRow.appendChild(headerKey);
+       headerRow.appendChild(headerValue);
+       thead.appendChild(headerRow);
+
+       // Populate the table body with the fetched data
+       for (const key in json) {
+         if (json.hasOwnProperty(key)) {
+           const row = document.createElement('tr');
+
+           const keyCell = document.createElement('td');
+           keyCell.textContent = key;
+
+           const valueCell = document.createElement('td');
+           valueCell.textContent = json[key];
+
+           row.appendChild(keyCell);
+           row.appendChild(valueCell);
+           tbody.appendChild(row);
+         }
+       }
+
+       // Append thead and tbody to the table
+       table.appendChild(thead);
+       table.appendChild(tbody);
+
+       // Append the table to the table container
+       tableContainer.appendChild(table);
+     })
+     .catch(error => console.error('Error fetching the data:', error));
 }

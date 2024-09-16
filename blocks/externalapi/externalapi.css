@@ -1,0 +1,28 @@
+/* Basic CSS for styling the table */
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #dddddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  caption {
+    font-size: 18px;
+    margin: 10px;
+    font-weight: bold;
+  }
