@@ -5,7 +5,7 @@ export default async function decorate(block) {
    const divContainer = document.createElement('div');
    divContainer.id = 'table-container'; // Set id to div
    mainContainer.appendChild(divContainer);
-   document.body.appendChild(mainContainer); // Append div to body
+   //document.body.appendChild(mainContainer); // Append div to body
 
    // Fetch the data from the API
    fetch(link)
