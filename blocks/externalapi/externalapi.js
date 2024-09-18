@@ -1,6 +1,6 @@
 export default async function decorate(block) {
     const link = [...block.querySelectorAll('a')].map((a) => a.href);
-    const mainContainer = document.createElement('main');
+    const mainContainer = document.querySelector('main');
    // Dynamically create the div to hold the table
    const divContainer = document.createElement('div');
    divContainer.id = 'table-container'; // Set id to div
