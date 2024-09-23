@@ -2,7 +2,7 @@ import { getConfigValue } from '../../scripts/configs.js';
 
 export default async function decorate(block) {
   setgScript();
-  const site_key=await getConfigs('6Lf4pEwqAAAAAHrM3Y7pCLImFTdiitaUlEiTeRy4')
+  const site_key=await getConfigs('6LfUtEwqAAAAADL97Xm09QLTRX5G8rpQVkNR5onG')
   const data_size=await getConfigs('normal')
   const data_theme=await getConfigs('light')
   const captchadiv = document.createElement('div');
@@ -15,7 +15,8 @@ export default async function decorate(block) {
 
 
 async function getConfigs(key) {
-  const value=await getConfigValue(key);
+//   const value=await getConfigValue(key);
+var value = '6LfUtEwqAAAAAJtrzPOF7VvijCLkUkbk2Z3kI8FL';
   console.log("---Key--->",key," ---Value---> ",value);
   return value;
 }
