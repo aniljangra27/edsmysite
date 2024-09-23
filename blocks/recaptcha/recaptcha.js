@@ -2,21 +2,19 @@ import { getConfigValue } from '../../scripts/configs.js';
 
 export default async function decorate(block) {
   setgScript();
-  const site_key=await getConfigs('6LfUtEwqAAAAADL97Xm09QLTRX5G8rpQVkNR5onG')
-  const data_size=await getConfigs('normal')
-  const data_theme=await getConfigs('light')
+
   const captchadiv = document.createElement('div');
   captchadiv.setAttribute('class','g-recaptcha');
-  captchadiv.setAttribute('data-sitekey',site_key);
-  captchadiv.setAttribute('data-size',data_size);
-  captchadiv.setAttribute('data-theme',data_theme);
+  captchadiv.setAttribute('data-sitekey','6LfUtEwqAAAAADL97Xm09QLTRX5G8rpQVkNR5onG');
+  captchadiv.setAttribute('data-size','normal');
+  captchadiv.setAttribute('data-theme','light');
   block.appendChild(captchadiv);
 }
 
 
 async function getConfigs(key) {
 //   const value=await getConfigValue(key);
-var value = '6LfUtEwqAAAAAJtrzPOF7VvijCLkUkbk2Z3kI8FL';
+var value = '6LfUtEwqAAAAAJtrzPOF7VvijCLkUkbk2Z3kI8FL'; //secret-key
   console.log("---Key--->",key," ---Value---> ",value);
   return value;
 }
